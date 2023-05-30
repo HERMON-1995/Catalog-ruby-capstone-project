@@ -24,3 +24,6 @@ class Main
     type == :to_i ? input.to_i : input
   end
 end
+
+main = Main.new
+main.display_menu
