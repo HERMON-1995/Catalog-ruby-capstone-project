@@ -4,6 +4,7 @@ require_relative 'label'
 books = []
 labels = []
 @albums = []
+@genres = []
 
 def add_book(books)
   puts 'Enter book publisher:'
@@ -114,4 +115,23 @@ def get_user_input(prompt, valid_responses)
     puts "\nInvalid input. Please enter one of the following: #{valid_responses.join(', ')} \n".red
   end
   input
+end
+
+def list_all_genres
+  if @genres.empty?
+    puts "\nNo Genres to Show Add some genres . . . ".magenta
+  else
+    puts "\nAvailable Genres in the list : #{@genres.count} \n".magenta
+    @genres.each_with_index do |genre, index|
+      print "[ #{index + 1} ]: Name: #{genre.name} \n"
+    end
+  end
+end
+
+def create_genre
+  print 'Enter the name of the genre: '
+  name = gets.chomp
+  genre = Genre.new(name)
+  @genres << genre
+  genre
 end
