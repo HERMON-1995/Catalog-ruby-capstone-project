@@ -74,7 +74,7 @@ def list_all_music_albums
   if @albums.empty?
     puts "\nNo Albums to show. Please add some Musid Albums . . . ".magenta
   else
-    puts "\nAvailable Music Albums in the list: #{@albums.count} \n" .magenta
+    puts "\nAvailable Music Albums in the list: #{@albums.count} \n".magenta
     @albums.each_with_index do |album, index|
       print "[ #{index + 1} ]:  Music Album: #{album.album_name} | Author: #{album.author.first_name} "
       print "#{album.author.last_name} |  Label: #{album.label.title}  | Archived: #{album.archived} | "
@@ -100,7 +100,7 @@ def add_music_album
   label = add_label
   label.add_item(album)
   puts "\nLabel added for the album #{album.album_name} successfully ".green
-  
+
   genre = add_genre
   genre.add_item(album)
   puts "\nGenre added for the album #{album.album_name} successfully ".green
