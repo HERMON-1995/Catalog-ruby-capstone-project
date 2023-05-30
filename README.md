@@ -131,7 +131,7 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Add different structure]**
+- [ ] **[Add different structure of diagram]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
