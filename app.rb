@@ -81,4 +81,37 @@ def list_all_music_albums
     end
   end
 end
-      
+
+def add_music_album
+  print 'Enter the name of the music album: '
+  album_name = gets.chomp
+  print 'Enter the publish date of the music album e.g (2023-01-11) '
+  date = set_valid_date
+
+  album = MusicAlbum.new(nil, album_name, date)
+
+  archive_album(album)
+
+  author = add_author
+  author.add_item(album)
+  puts "\nAuthor added for the album #{album.album_name} succesfully ".green
+
+  label = add_label
+  label.add_item(album)
+  puts "\nLabel added for the album #{album.album_name} successfully ".green
+  
+  genre = add_genre
+  genre.add_item(album)
+  puts "\nGenre added for the album #{album.album_name} successfully ".green
+end
+
+def get_user_input(prompt, valid_responses)
+  while true
+    print prompt
+    input = gets.chomp
+    break if valid_responses.include?(input)
+
+    puts "\nInvalid input. Please enter one of the following: #{valid_responses.join(', ')} \n".red
+  end
+  input
+end
