@@ -3,6 +3,7 @@ require_relative 'label'
 
 books = []
 labels = []
+@albums = []
 
 def add_book(books)
   puts 'Enter book publisher:'
@@ -67,3 +68,17 @@ loop do
     puts 'Invalid choice. Please try again.'
   end
 end
+
+def list_all_music_albums
+  if @albums.empty?
+    puts "\nNo Albums to show. Please add some Musid Albums . . . ".magenta
+  else
+    puts "\nAvailable Music Albums in the list: #{@albums.count} \n" .magenta
+    @albums.each_with_index do |album, index|
+      print "[ #{index + 1} ]:  Music Album: #{album.album_name} | Author: #{album.author.first_name} "
+      print "#{album.author.last_name} |  Label: #{album.label.title}  | Archived: #{album.archived} | "
+      puts "On Spotify: #{album.on_spotify} | Publication_date: #{album.publish_date} | Genre: #{album.genre.name}"
+    end
+  end
+end
+      
