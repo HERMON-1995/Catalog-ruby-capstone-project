@@ -74,6 +74,5 @@ class MusicAlbumStore
     end
   end
 
-
   #   paste the code here then delete this comment...feel free to try the app it is preserving
 end
