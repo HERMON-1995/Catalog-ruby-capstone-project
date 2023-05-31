@@ -6,7 +6,7 @@ class Label < Item
 
   def initialize(title, color)
     @id = Random.rand(1..1000)
-    super(title, color)
+    super()
     @title = title
     @color = color
     @items = []
@@ -15,5 +15,19 @@ class Label < Item
   def add_item(item)
     @items << item
     item.label = self
+  end
+
+  def to_h
+    {
+      id: @id,
+      publisher: @publisher,
+      cover_state: @cover_state,
+      genre: @genre,
+      author: @author,
+      source: @source,
+      label: @label&.to_h,
+      publish_date: @publish_date,
+      archived: @archived
+    }
   end
 end

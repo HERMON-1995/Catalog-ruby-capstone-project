@@ -6,7 +6,7 @@ class Book < Item
 
   def initialize(publisher, cover_state)
     @id = Random.rand(1..1000)
-    super(publisher, cover_state)
+    super()
     @publisher = publisher
     @cover_state = cover_state
   end
@@ -17,5 +17,19 @@ class Book < Item
                 else
                   false
                 end
+  end
+
+  def to_h
+    {
+      id: @id,
+      publisher: @publisher,
+      cover_state: @cover_state,
+      genre: @genre,
+      author: @author,
+      source: @source,
+      label: @label&.to_h,
+      publish_date: @publish_date,
+      archived: @archived
+    }
   end
 end
