@@ -33,3 +33,4 @@ CREATE TABLE genres(
   name VARCHAR(255),
   PRIMARY KEY(id)
 );
+
