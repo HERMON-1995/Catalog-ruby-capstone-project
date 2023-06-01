@@ -19,7 +19,7 @@ CREATE TABLE labels (
 
 ----------- Create music albums table ------------------
 CREATE TABLE musicalbums(
-  id INT,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   published_date DATE,
   on_spotify BOOLEAN,
@@ -29,7 +29,7 @@ CREATE TABLE musicalbums(
 );
 ----------- Create genre table ------------------
 CREATE TABLE genres(
-  id INT,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   PRIMARY KEY(id)
 );
