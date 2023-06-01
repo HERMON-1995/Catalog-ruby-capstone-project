@@ -12,4 +12,17 @@ class Author
     @items << item
     item.author = self
   end
+
+  def full_name
+    "#{@first_name} #{@last_name}"
+  end
+  
+  def to_h
+    {
+      id: @id,
+      first_name: @first_name,
+      last_name: @last_name
+    }
+  end
+  
 end

@@ -2,14 +2,16 @@ require_relative 'book'
 require_relative 'label'
 require_relative 'music_album'
 require_relative 'music_album_store'
+require_relative 'author'
 require 'json'
 
 class App
-  attr_reader :books, :labels
+  attr_reader :books, :labels, :authors
 
   def initialize
     @books = []
     @labels = []
+    @authors = []
   end
 
   def get_input(prompt, type = :to_s)
@@ -23,7 +25,10 @@ class App
     publisher = gets.chomp
     puts 'Enter cover state (good/bad):'
     cover_state = gets.chomp
-    book = Book.new(publisher, cover_state)
+    puts 'Enter author name:'
+    author_name = gets.chomp
+    author = find_or_create_author(author_name)
+    book = Book.new(publisher, cover_state, author)
     books << book
     book
   end
@@ -31,10 +36,12 @@ class App
   def list_books(books)
     puts 'List of all books:'
     books.each do |book|
-      puts "Book ID: #{book.id},
-    Publisher: #{book.publisher},
-    Cover State: #{book.cover_state},
-    Archived: #{book.archived}"
+      puts "Book ID: #{book.id}"
+      puts "Publisher: #{book.publisher}"
+      puts "Cover State: #{book.cover_state}"
+      puts "Author: #{book.author.full_name}" if book.author
+      puts "Archived: #{book.archived}"
+      puts '---'
     end
   end
 
@@ -61,6 +68,16 @@ class App
 
   def save_labels(filename)
     File.write(filename, JSON.generate(labels.map(&:to_h)))
+  end
+
+  def find_or_create_author(author_name)
+    existing_author = authors.find { |author| author.full_name == author_name }
+    return existing_author if existing_author
+
+    first_name, last_name = author_name.split(' ')
+    new_author = Author.new(first_name, last_name)
+    authors << new_author
+    new_author
   end
 
   def book_options
