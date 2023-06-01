@@ -16,3 +16,21 @@ CREATE TABLE labels (
   title VARCHAR(50) NOT NULL,
   color VARCHAR(50) NOT NULL
 );
+
+----------- Create music albums table ------------------
+CREATE TABLE musicalbums(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  published_date DATE,
+  on_spotify BOOLEAN,
+  archived BOOLEAN,
+  genre_id INT REFERENCES genres(id),
+  PRIMARY KEY(id)
+);
+----------- Create genre table ------------------
+CREATE TABLE genres(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  PRIMARY KEY(id)
+);
+
