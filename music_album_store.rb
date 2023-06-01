@@ -74,5 +74,20 @@ class MusicAlbumStore
     end
   end
 
-  #   paste the code here then delete this comment...feel free to try the app it is preserving
+  def load_data
+    if File.exist?(@filename)
+      data = File.read(@filename)
+      return [] if data.empty? # Check if the file is empty, return an empty array
+
+      JSON.parse(data).map do |album_data|
+        MusicAlbum.new(album_data['name'], album_data['publish_date'], on_spotify: album_data['on_spotify'], genres: album_data['genres'])
+      end
+    else
+      []
+    end
+  end
+
+  def save_data
+    File.write(@filename, JSON.generate(@albums.map(&:to_h)))
+  end
 end
