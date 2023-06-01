@@ -2,6 +2,8 @@ require_relative 'book'
 require_relative 'label'
 require_relative 'music_album'
 require_relative 'music_album_store'
+require_relative 'game_author'
+require_relative 'game'
 require 'json'
 
 class App
@@ -27,7 +29,7 @@ class App
     books << book
     book
   end
-
+  
   def list_books(books)
     puts 'List of all books:'
     books.each do |book|
@@ -88,44 +90,44 @@ class App
         list_labels
       when '5'
         puts 'Thanks for using.'
+        main_menu
         return
       else
         puts 'Invalid choice. Please try again.'
       end
     end
   end
-
-  def main_menu
-    puts "Welcome to our catalog 👋\nSelect an option:"
-    options = [
-      '1 - List books options',
-      '====================================',
-      '2 - List music options',
-      '====================================',
-      '3 - List game options',
-      '====================================',
-      '4 - Quit'
-    ]
-    puts options
-    option = gets.chomp.downcase
-    case option
-    when '1'
-      book_options
-    when '2'
-      store = MusicAlbumStore.new('./data/albums.json')
-      store.run
-    when '3'
-      puts 'Thanks for using.'
-      nil
-    else
-      puts 'Invalid choice. Please try again.'
-    end
-  end
 end
 
 def main_menu
   app = App.new
-  app.main_menu
+  puts "Welcome to our catalog 👋\nSelect an option:"
+  options = [
+    '1 - List books options',
+    '====================================',
+    '2 - List music options',
+    '====================================',
+    '3 - List game options',
+    '====================================',
+    '4 - Quit'
+  ]
+  puts options
+  option = gets.chomp.downcase
+  case option
+  when '1'
+    app.book_options
+  when '2'
+    store = MusicAlbumStore.new('./data/albums.json')
+    store.run
+  when '3'
+    game = GameStore.new
+    game.display_menu
+  when '4'
+    puts 'Thanks for using.'
+    nil
+  else
+    puts 'Invalid choice. Please try again.'
+  end
 end
 
 main_menu
