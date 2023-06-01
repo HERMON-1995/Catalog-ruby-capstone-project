@@ -29,7 +29,7 @@ class App
     books << book
     book
   end
-  
+
   def list_books(books)
     puts 'List of all books:'
     books.each do |book|
