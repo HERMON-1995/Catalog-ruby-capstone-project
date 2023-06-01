@@ -21,16 +21,18 @@ CREATE TABLE labels (
 CREATE TABLE musicalbums(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  published_date DATE,
+  publish_date DATE NOT NULL DEFAULT DATE,
   on_spotify BOOLEAN,
   archived BOOLEAN,
-  genre_id INT REFERENCES genres(id),
+  genre_id INT REFERENCES genres(genre_id),
+  label_id INT REFERENCES label(label_id),
+  author_id INT REFERENCES authors(author_id),
   PRIMARY KEY(id)
 );
 ----------- Create genre table ------------------
 CREATE TABLE genres(
-  id SERIAL PRIMARY KEY,
+  genre_id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  PRIMARY KEY(id)
+  PRIMARY KEY(genre_id)
 );
 
