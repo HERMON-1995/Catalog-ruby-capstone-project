@@ -23,4 +23,14 @@ RSpec.describe Label do
       expect(label.color).to eq 'Red'
     end
   end
+
+   describe '#to_h' do
+    it 'returns a hash representation of the label' do
+      expect(label.to_h).to be_a(Hash)
+    end
+
+    it 'includes the id' do
+      expect(label.to_h[:id]).to eq(label.id)
+    end
+  end
 end
