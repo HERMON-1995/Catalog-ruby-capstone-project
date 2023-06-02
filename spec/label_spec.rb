@@ -24,7 +24,7 @@ RSpec.describe Label do
     end
   end
 
-   describe '#to_h' do
+  describe '#to_h' do
     it 'returns a hash representation of the label' do
       expect(label.to_h).to be_a(Hash)
     end

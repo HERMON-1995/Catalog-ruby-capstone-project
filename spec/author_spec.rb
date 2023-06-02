@@ -28,7 +28,7 @@ describe Author do
       expect(author.full_name).to eq('Hermon Gebre')
     end
   end
-  
+
   def setup
     @item1 = Item.new('Item 1')
     @item2 = Item.new('Item 2')
