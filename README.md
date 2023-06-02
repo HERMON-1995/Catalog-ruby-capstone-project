@@ -28,6 +28,7 @@
 # 📖 [Catalog of my things app] <a name="about-project"></a>
 
 **[Catalog of my things app]** is a simple console app that allows users to manage and record collections of the things they own: books, music albums, movies, and games.
+## _Here is our short introduction video to our project._[VIDEO](https://drive.google.com/file/d/1gGuDPaqhMHi0-OPRbuGOAH2U5kXKQwSk/view)
 
 ## 🛠 Built With <a name="built-with"></a>
 
